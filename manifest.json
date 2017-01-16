@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "name": "AGM assist - Copy AGM User stories or defects as '#[ID]: [Title]' in one click",
+  "description": "This extension enables you to copy ID & title of current opened user story/defect or selected items in one click with format: #[ID]: [Title].",
+  "version": "1.0",
+  "author": "Easton",
+  "background": {
+    "scripts": [
+      "ext/background.js"
+    ],
+    "persistent": true
+  },
+  "page_action": {
+    "default_icon": {
+      "19": "images/copy.png"
+    },
+    "default_title": "Copy selected AGM items as #[ID]: [Title]"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content/content.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "permissions": [
+    "clipboardWrite",
+    "tabs"
+  ]
+}
