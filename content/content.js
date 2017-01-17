@@ -67,7 +67,7 @@
 
         window.setTimeout(function () {
             remove();
-        }, 2000);
+        }, 3000);
 
     }
 
