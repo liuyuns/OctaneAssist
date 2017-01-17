@@ -39,14 +39,6 @@
             chrome.pageAction.onClicked.addListener(onCopyClicked);
         });
 
-        chrome.tabs.onActivated.addListener(function(activeInfo){
-            chrome.pageAction.show(activeInfo.tabId);
-
-                        chrome.pageAction.onClicked.removeListener(onCopyClicked);
-            chrome.pageAction.onClicked.addListener(onCopyClicked);
-
-        })
-
         function copyText(text) {
             var input = document.createElement('textarea');
             document.body.appendChild(input);
