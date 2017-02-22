@@ -1,14 +1,13 @@
 (
     function () {
         var isDebugging = false;
-        var re = /saas.hp(.*).com\/agm/;
+        var re = /saas.hp(.*).com\//;
 
         function isAgmSite(url){
             return re.test(url);
         }
 
         function onCopyClicked(tab) {
-            var re = /saas.hp(.*).com\//;
             if (!isAgmSite(tab.url)) {
                 console.log("Nothing to copy, since the URL does not look like AGM site, URL: " + tab.url);
                 if (!isDebugging){
