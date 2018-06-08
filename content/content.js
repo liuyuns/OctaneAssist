@@ -3,6 +3,12 @@
     return `#${id}: ${name}`;
   }
 
+  function getIndex(row) {
+    var regex = /item-index-([0-9]+)/;
+    var match = regex.exec(row.className);
+    return !!match && match.length > 1 && parseInt(match[1]);
+  };
+
   function getOctaneItemsText() {
 
     var singleHeader = document.querySelector('div[class*=alm-entity-form-header]');
@@ -31,12 +37,6 @@
       row.indexX = getIndex(row);
       return true;
     });
-
-    var getIndex = row => {
-      var regex = /item-index-([0-9]+)/;
-      var match = regex.exec(row.className);
-      return !!match && match.length > 1 && parseInt(match[1]);
-    };
 
     rows.sort((rowx, rowy) => rowx.indexX - rowy.indexX);
 
