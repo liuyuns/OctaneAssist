@@ -6,6 +6,7 @@
   "author": "Easton",
   "background": {
     "scripts": [
+      "common/common.js",
       "ext/background.js"
     ],
     "persistent": true
@@ -22,6 +23,7 @@
         "<all_urls>"
       ],
       "js": [
+        "common/common.js",
         "content/content.js"
       ],
       "run_at": "document_end",

@@ -1,15 +1,17 @@
 (
     function () {
         var isDebugging = false;
-        var re = /saas.hp(.*).com\//;
 
-        function isAgmSite(url){
-            return re.test(url);
-        }
+        window.addEventListener("message", function(msg){
+            if (!!msg.data.log){
+                console.log(msg.data.log);
+            }
+        }, true);
 
         function onCopyClicked(tab) {
-            if (!isAgmSite(tab.url)) {
-                console.log("Nothing to copy, since the URL does not look like AGM site, URL: " + tab.url);
+
+            if (!isAgmSite(tab.url) && !isOctaneSite(tab.url)) {
+                console.log("Nothing to copy, the URL does not look like either Octane or AGM site, URL: " + tab.url);
                 if (!isDebugging){
                     return;
                 }
@@ -24,7 +26,7 @@
 
         // show page action for tabs that matches the condition.
         chrome.tabs.onUpdated.addListener(function (tabid, changeInfo, tab) {
-            if (!isAgmSite(tab.url)) {
+            if (!isAgmSite(tab.url) && !isOctaneSite(tab.url)) {
                 chrome.pageAction.hide(tabid);
                 if (!isDebugging)
                 {
