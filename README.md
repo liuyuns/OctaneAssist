@@ -1,6 +1,6 @@
-# AGMAssitant
+# OctaneAssist
 
-> Chrome extension for copying AGM user stories/defects in format #[ID]: #[Name] by one click.
+> Chrome extension to copy Octane user stories/defects in format #[ID]: #[Name] by one click.
 
 ## Installation
 
@@ -8,7 +8,7 @@
 2. Turn on Developer Mode
 3. Load unpacked extension...
 4. Choose the folder
-5. Visit AGM site or refresh existing tab
+5. Visit Octane site or refresh existing Octane page
 
 ## Usage
 
