@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "AGM assistant - Copy AGM User stories or defects as '#[ID]: [Title]' in one click",
+  "name": "Octane assistant - One click shortcuts on Octane",
   "description": "This extension enables you to copy ID & title of current opened user story/defect or selected items in one click with format: #[ID]: [Title].",
   "version": "1.0",
   "author": "Easton",
@@ -15,7 +15,7 @@
     "default_icon": {
       "19": "images/copy.png"
     },
-    "default_title": "Copy selected AGM items as #[ID]: [Title]"
+    "default_title": "Copy selected Octane items as #[ID]: [Title]"
   },
   "content_scripts": [
     {
@@ -24,7 +24,8 @@
       ],
       "js": [
         "common/common.js",
-        "content/content.js"
+        "content/content.js",
+        "content/field_editor.js"
       ],
       "run_at": "document_end",
       "all_frames": false

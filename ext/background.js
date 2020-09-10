@@ -2,8 +2,8 @@
     function () {
         var isDebugging = false;
 
-        window.addEventListener("message", function(msg){
-            if (!!msg.data.log){
+        window.addEventListener("message", function (msg) {
+            if (!!msg.data.log) {
                 console.log(msg.data.log);
             }
         }, true);
@@ -12,7 +12,7 @@
 
             if (!isAgmSite(tab.url) && !isOctaneSite(tab.url)) {
                 console.log("Nothing to copy, the URL does not look like either Octane or AGM site, URL: " + tab.url);
-                if (!isDebugging){
+                if (!isDebugging) {
                     return;
                 }
             }
@@ -28,8 +28,7 @@
         chrome.tabs.onUpdated.addListener(function (tabid, changeInfo, tab) {
             if (!isAgmSite(tab.url) && !isOctaneSite(tab.url)) {
                 chrome.pageAction.hide(tabid);
-                if (!isDebugging)
-                {
+                if (!isDebugging) {
                     return;
                 }
             }
@@ -49,4 +48,22 @@
             document.execCommand('Copy');
             input.remove();
         };
+
+        chrome.runtime.onMessage.addListener(
+            function (request, sender, sendResponse) {
+                console.log(sender.tab ?
+                    "from a content script:" + sender.tab.url :
+                    "from the extension");
+                console.log(Date());
+
+                if (!!request.greeting) {
+                    var bodyStr = JSON.stringify({ text: request.greeting, enter: true });
+
+                    fetch("http://127.0.0.1:8000/type", { body: bodyStr, method: "POST" }).then((res) => {
+                        console.log(`Response: ${res}`);
+                        sendResponse({ farewell: `Typed on ${Date()}` });
+                    });
+                }
+            });
+
     })();
